@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konya Ovakavağı Köyü</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Temel Ayarlar ve Renk Paleti */
+        :root {
+            --bugday-sarisi: #F4D03F;
+            --toprak-rengi: #8D6E63;
+            --doga-yesili: #4CAF50;
+            --koyu-gri: #2C3E50;
+            --acik-krem: #F8F9F9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--acik-krem);
+            /* Modern Geometrik Nokta Deseni Arka Planı */
+            background-image: radial-gradient(rgba(141, 110, 99, 0.1) 2px, transparent 2px);
+            background-size: 30px 30px;
+            color: var(--koyu-gri);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+        }
+
+        /* Navigasyon Barı */
+        header {
+            background-color: var(--koyu-gri);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--bugday-sarisi);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul li a:hover {
+            color: var(--bugday-sarisi);
+        }
+
+        /* Kahraman (Hero) Bölümü - Asimetrik Kesim */
+        #anasayfa {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+            margin-top: 60px;
+            /* Modern Geometrik Clip-Path */
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            padding-bottom: 5rem;
+        }
+
+        #anasayfa h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: var(--bugday-sarisi);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+        }
+
+        #anasayfa p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            background-color: var(--bugday-sarisi);
+            color: var(--koyu-gri);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(244, 208, 63, 0.4);
+        }
+
+        .btn:hover {
+            background-color: #f1c40f;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(244, 208, 63, 0.6);
+        }
+
+        /* Ortak Bölüm Stilleri */
+        section.icerik {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .icerik h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--koyu-gri);
+            position: relative;
+        }
+
+        .icerik h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--bugday-sarisi), var(--toprak-rengi));
+            margin: 15px auto 0;
+            border-radius: 5px;
+        }
+
+        /* Hakkımızda ve Bilgi Kartları - Geometrik Detaylar */
+        .kart-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .kart {
+            background: white;
+            border-radius: 20px 0 20px 0; /* Geometrik çapraz kavis */
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Kart İçi Geometrik Daire */
+        .kart::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 100px;
+            height: 100px;
+            background: var(--bugday-sarisi);
+            border-radius: 50%;
+            opacity: 0.15;
+            transition: all 0.4s ease;
+        }
+
+        .kart:hover::before {
+            transform: scale(1.5);
+            opacity: 0.25;
+        }
+
+        .kart:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-bottom: 5px solid var(--toprak-rengi);
+        }
+
+        .kart h3 {
+            color: var(--koyu-gri);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .kart p {
+            font-size: 1rem;
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Ekonomi ve Yaşam Listesi */
+        .liste-kutusu {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border-left: 8px solid var(--toprak-rengi);
+        }
+
+        /* Galeri Bölümü */
+        .galeri-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .galeri-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .galeri-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+        /* Harita Bölümü */
+        .harita-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            line-height: 0; /* Iframe altındaki boşluğu sıfırlamak için */
+            position: relative;
+        }
+
+        .harita-container iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            filter: grayscale(20%) contrast(110%); /* Haritayı siteyle biraz daha uyumlu yapmak için hafif filtre */
+            transition: filter 0.3s;
+        }
+
+        .harita-container iframe:hover {
+            filter: grayscale(0%) contrast(100%);
+        }
+
+        /* Alt Bilgi (Footer) - Asimetrik Kesim */
+        footer {
+            background-color: var(--koyu-gri);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%); /* Alt kısımda geometrik yansıma */
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            #anasayfa {
+                clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+            }
+            #anasayfa h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasyon Menüsü -->
+    <header>
+        <nav>
+            <a href="#" class="logo">OVAKAVAĞI</a>
+            <ul>
+                <li><a href="#anasayfa">Ana Sayfa</a></li>
+                <li><a href="#hakkinda">Hakkında</a></li>
+                <li><a href="#ekonomi">Tarım ve Yaşam</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#harita">Harita</a></li> <!-- Harita Menüye Eklendi -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Kahraman (Hero) Alanı -->
+    <section id="anasayfa">
+        <h1>Konya'nın Kalbinde Bir Köy</h1>
+        <p>Bozkırın ortasında, samimi insanları, geniş buğday tarlaları ve huzur dolu atmosferiyle Ovakavağı'na hoş geldiniz.</p>
+        <a href="#hakkinda" class="btn">Köyümüzü Keşfet</a>
+    </section>
+
+    <!-- Hakkında Bölümü -->
+    <section id="hakkinda" class="icerik">
+        <h2>Ovakavağı Hakkında</h2>
+        <div class="kart-container">
+            <div class="kart">
+                <h3>📍 Konum ve Coğrafya</h3>
+                <p>Konya'nın Karatay ilçesine bağlı olan Ovakavağı, uçsuz bucaksız Konya Ovası'nın o eşsiz düzlüğünde yer alır. Geniş tarım arazileri ve karasal iklimin tipik özellikleriyle çevrilidir.</p>
+            </div>
+            <div class="kart">
+                <h3>🕰️ Tarihçe ve Kültür</h3>
+                <p>İç Anadolu'nun köklü geleneklerini günümüze taşıyan köyümüz, Büyükşehir yasasıyla mahalle statüsüne geçse de geleneksel köy odası sohbetlerini, düğün adetlerini ve imece usulünü yaşatmaya devam etmektedir.</p>
+            </div>
+            <div class="kart">
+                <h3>👨‍👩‍👧‍👦 Nüfus ve Yaşam</h3>
+                <p>Misafirperverliğiyle tanınan halkı, dayanışma içinde huzurlu bir yaşam sürer. Genç neslin bir kısmı şehre göç etse de, yaz aylarında harman zamanı köy eski hareketli günlerine geri döner.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ekonomi ve Yaşam Bölümü -->
+    <section id="ekonomi" class="icerik">
+        <h2>Tarım ve Geçim Kaynakları</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p style="margin-bottom: 2.5rem; font-size: 1.1rem; color: #555;">Köyün can damarı topraktır. Yüzlerce yıllık bir miras olan çiftçilik, bugün modern tekniklerle harmanlanarak devam etmektedir. Temel geçim kaynağı tarım ve hayvancılıktır.</p>
+            
+            <ul class="liste-kutusu" style="list-style: none; text-align: left;">
+                <li style="margin-bottom: 1.5rem;"><strong>🌾 Tahıl Yetiştiriciliği:</strong> Buğday ve arpa, uçsuz bucaksız tarlalarda yetiştirilen en temel ürünlerdir. Hasat zamanı altın sarısına dönen tarlalar görsel bir şölen sunar.</li>
+                <li style="margin-bottom: 1.5rem;"><strong>🌽 Endüstriyel Bitkiler:</strong> Şeker pancarı, mısır ve ayçiçeği, sulu tarım uygulamaları sayesinde köy ekonomisine büyük katkı sağlar.</li>
+                <li><strong>🐄 Hayvancılık:</strong> Küçükbaş ve büyükbaş hayvancılık tarımı destekleyen, ev ekonomisine katkı sağlayan önemli bir diğer uğraştır.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Galeri Bölümü -->
+    <section id="galeri" class="icerik">
+        <h2>Köyden Manzaralar</h2>
+        <div class="galeri-grid">
+            <img src="https://images.unsplash.com/photo-1590055531615-f16d36ffe8ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Buğday Tarlası">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Konya Ovası">
+            <!-- Yenilenen 3. ve 4. Resimler -->
+            <img src="https://images.unsplash.com/photo-1589923188900-85dae523342b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Traktör ve Hasat">
+            <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Köy Yolu">
+        </div>
+    </section>
+
+    <!-- Harita Bölümü -->
+    <section id="harita" class="icerik">
+        <h2>Konumumuz</h2>
+        <div class="harita-container">
+            <!-- Google Maps Iframe (Ovakavağı, Karatay/Konya) -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40167.337837016334!2d33.1558913!3d37.8631169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d0eb040ea4fc25%3A0xc0eb41434c017c0!2sOvakava%C4%9F%C4%B1%2C%20Karatay%2FKonya!5e0!3m2!1str!2str!4v1709476000000!5m2!1str!2str" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- Alt Bilgi (Footer) -->
+    <footer>
+        <p><strong>Ovakavağı Köyü / Karatay / KONYA</strong></p>
+        <p>Bu web sitesi Ovakavağı köyünün güzelliklerini tanıtmak amacıyla modern teknolojilerle hazırlanmıştır.</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem; color: #aaa;">&copy; 2026 Tüm Hakları Saklıdır.</p>
+    </footer>
+
+</body>
+</html>
